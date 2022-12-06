@@ -1,0 +1,129 @@
+.login-container {
+    background: url(../../../public/bg1.png);
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-position-x: center;
+}
+.input{
+    display: flex;
+    align-items: flex-start;
+}
+.icon{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    color:rgb(0, 0, 0);
+    background: #ffff;
+    border:none;
+    padding:9.5px;
+}
+.img-header{
+    width: 80px;
+    height: 80px;
+    padding:4px;
+    margin: -10% 0 0 40%;
+    position: absolute;
+    top: 0;
+}
+.header {
+    border-radius: 50%;
+    background: url(../../../public/1abc.svg);
+    background-color: rgb(255, 255, 255);
+    background-size:cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    border: #fbbc1a 1px solid;
+}
+
+.aside-right {
+    margin: 13%;
+    position: relative;
+}
+
+.login-container .aside-right {
+    background: #0f0c29;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 30%;
+    border-radius: 5px;
+}
+
+.login-container .aside-right .header h3 {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 40px;
+}
+
+#login-form {
+    padding: 70px 28px 28px 28px;
+    border: #fbbc1a 1px solid;
+}
+
+.login-container .aside-right .form-action {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #ffffff;
+}
+
+.input-wrapper input{
+    border: none;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    margin-bottom: 25px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.btn {
+    padding: 20px 40px;
+    color: #ffffff;
+    background: #aa4b6b;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.error {
+    color: #FF0000;
+}
+
+#redirect-to-login {
+    cursor: pointer;
+}
+
+#redirect-to-register {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+@media (max-width:739px){
+    .login-container {
+        justify-content: center;
+        align-items: center;
+        background-position-x:left;
+    }
+    .login-container .aside-right{
+        width: 277px;
+        margin: 0;
+    }
+    .img-header{
+        margin: -44px 0 0 101px;
+    }
+}
