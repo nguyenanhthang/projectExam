@@ -1,0 +1,69 @@
+.containerExam{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+.asideLeft{
+    border: 1px solid #fffc00;
+    width: 70%;
+    height: 100%;
+    color:#fff;
+}
+.navExam{
+    padding:15px;
+    border: 1px solid #fffc00;
+    background-color: #1F2A40;
+    height: 20%;
+    width: 100%;
+}
+.timeExam{
+    margin-top: 10px;
+}
+.bodyExam{
+    width:100%;
+    height: 80%;
+    background: #141b2d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.mainExam{
+    padding: 1% 5%;
+}
+.question{
+    display: flex;
+    flex-wrap: wrap;
+}
+label{
+    margin-left: 4px;
+}
+.answers{
+    margin: 20px;
+}
+.answerInput{
+    margin-top: 8px;
+}
+.btnExam{
+    margin: 0 35px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+    padding: 10px 20px;
+}
+.asideRight{
+    width: 30%;
+    border: 1px solid #fffc00;
+    height: 100%;
+    background: #1F2A40;
+}
+.chooseQuestion{
+    margin:10px;
+    width: 100%;
+    height: 100%;
+}
+.btnQuestion{
+    padding: 5px 10px;
+    margin: 8px 5px;
+    cursor: pointer;
+}

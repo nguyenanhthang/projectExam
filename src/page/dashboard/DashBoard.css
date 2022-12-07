@@ -1,8 +1,10 @@
+
 .container{
     height: 100vh;
+    display: flex;
 }
 .navUser{
-    background-color: #101624;
+    background-color: #1F2A40;
     width: 17%;
     height: 100%;
 }
@@ -19,6 +21,7 @@
 }
 .info{
     width: 80%;
+    margin:20px 0 0px 15px;
 }
 .infoUser{
     display: flex;
@@ -57,7 +60,7 @@
     -webkit-line-clamp: 1;
     color:#fff;
     overflow: hidden;
-    margin:20px 0 0px 15px;
+    
 }
 .infoUserPoint{
     width: 100%;
@@ -66,31 +69,58 @@
     -webkit-line-clamp: 1;
     color:#fff;
     overflow: hidden;
-    margin:10px 0 0px 15px;
+    
+}
+.main{
+    padding:10px 20px 15px 20px;
+    width: 83%;
+    height: 100vh;
+    background-color: #141b2d;
+    display: flex;
+    flex-direction: column;
 }
 .toolDash{
+    margin: 10px 0px 0px 0px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 7%;
+    
 }
 .searchDash{
-    width: 361px;
-    height: var(--search-height);
-    background-color: rgba(22, 24, 35, 0.06);
-    border-radius: var(--search-border-radius);
-    position: relative;
     display: flex;
-    padding-left: 16px;
-    border: 1.5px solid transparent;
-}
-input{
-    flex: 1;
-    color:var(--black);
-    font-size:1.6rem;
-    padding-right: 40px;
-    background-color: transparent;
+    width: 70%;
     height: 100%;
-    caret-color: var(--primary);
-    font-family: var(--font-family);
+    background-color: rgba(22, 24, 35, 0.06);
 }
-input:not(:placeholder-shown) ~ .search-btn{
-    color:rgba(22, 24, 35, 0.76);
+.inputSearch{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding:10px;
+    flex: 1;
+    border:none;
+    outline: none;
+}
+.search-btn{
+    border: none;
+    padding:0 20px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.filterDash{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    width: 10%;
+    height: 100%;
+    background-color: #ffffff;
+}
+.leaderBoard{
+    margin-top:20px;
+    background-color:#1F2A40;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
