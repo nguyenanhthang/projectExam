@@ -6,11 +6,11 @@ function Result({title,time,point,ratting}) {
     return ( 
         <div className="containerResult">
             <div className="headerResult">
-                <span className="title">{title}</span>
+                <p className="title">{title}</p>
             </div>
             <div className="body">
                 <div className="bodyTime">
-                    <FontAwesomeIcon className="timeIcon" icon={faClock}/>
+                    <img src="../../../toppng 1.png" alt="" className="timeIcon" icon={faClock}/>
                     <span className="time">{time} phút</span>
                 </div>
                 <div className="bodyPoint">

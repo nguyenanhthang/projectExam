@@ -2,26 +2,48 @@ import './Login.css'
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState,useEffect ,createContext} from 'react';
+import { dataPeople } from '../../Data/Data';
+import { useNavigate } from 'react-router-dom';
+const getUser = createContext();
 function Login() {
+    const [getLogin,setGetLogin]=useState({
+        userName:'',
+        password:''
+    })
+    const navigate = useNavigate();
+    console.log(getLogin);
+    const getDataLogin=(e)=>{
+        let name = e.target.name
+        let value = e.target.value
+        setGetLogin({...getLogin,[name]:value})
+    }
+    const handleLogin=()=>{
+        dataPeople.map((el,i)=>{
+            if(el.userName===getLogin.userName&&el.password===getLogin.password){
+                navigate('/dashboard')
+            }
+        })
+    }
     return ( 
-        <div class="login-container">
-        <div class="aside-right">
+        <div className="login-container">
+        <div className="form-container">
             <div className='img-header'>
                 <div className="header">
                 </div>
             </div>
-            <form id="login-form">
+            <div id="login-form">
                 <div className="input-wrapper">
                     <div className='input'>
                         <FontAwesomeIcon className='icon' icon={faUser} />
-                        <input type="text" placeholder="User Name" name="email"></input>
+                        <input onChange={getDataLogin} type="text" placeholder="User Name" name="userName"></input>
                     </div>
                     <div className="error" id="email-error"></div>
                 </div>
                 <div className="input-wrapper">
                     <div className='input'>
                     <FontAwesomeIcon className='icon' icon={faKey} />
-                        <input type="password" placeholder="Password" name="password"/>
+                        <input onChange={getDataLogin} type="password" placeholder="Password" name="password"/>
                         <div className="error" id="password-error"></div>
                     </div>
                 </div>
@@ -29,11 +51,11 @@ function Login() {
                     <span className="cursor-pointer" id="redirect-to-register">
                         <input type="checkbox" /> Remember me
                     </span>
-                    <button className="btn" type="submit" id="login">
+                    <button onClick={handleLogin} className="btn" id="login">
                         Login
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
         </div>
     );

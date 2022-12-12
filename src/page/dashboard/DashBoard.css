@@ -2,6 +2,7 @@
 .container{
     height: 100vh;
     display: flex;
+    width: 100%;
 }
 .navUser{
     background-color: #1F2A40;
@@ -55,25 +56,21 @@
 }
 .infoUserName{
     width: 100%;
-    display:-webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
     color:#fff;
     overflow: hidden;
-    
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .infoUserPoint{
     width: 100%;
-    display:-webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
     color:#fff;
     overflow: hidden;
-    
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .main{
     padding:10px 20px 15px 20px;
-    width: 83%;
+    width: 100%;
     height: 100vh;
     background-color: #141b2d;
     display: flex;
@@ -117,10 +114,80 @@
     background-color: #ffffff;
 }
 .leaderBoard{
+    padding-top: 20px;
     margin-top:20px;
     background-color:#1F2A40;
     width: 100%;
     height: 100%;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
+    overflow: hidden;
+}
+.btnMobile,.headerMobile{
+    display: none;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    animation: faceIn linear 0.1s;
+    display: flex;
+}
+
+.modal__overlay {
+    
+    position: absolute;
+    width: 55%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal{
+    display: none;
+}
+@media (max-width:739px){
+    .navUser{
+        display: none;
+    }
+    .navUser.isMobile{
+        display: block;
+        position: fixed;
+    }
+    .filterDash{
+        display: none;
+    }
+    .btnMobile{
+        display: block;
+        height: 10%;
+        border: none;
+    }
+    .headerMobile{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 5%;
+    }
+    .searchDash{
+        margin: 12px 0;
+        width: 100%;
+    }
+    .leaderBoard{
+        margin-top: 30px;
+        display: flex;
+        padding: 15px 0;
+    }
+    .navUser{
+        background-color: #1F2A40;
+        width: 45%;
+        height: 100%;
+    }
+    .modal.isMobile{
+        display:flex;
+        justify-content: flex-end;
+    }
+    .icon{
+        border-radius: 3px;
+    }
 }
