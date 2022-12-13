@@ -1,51 +1,57 @@
-
-.container{
+.container {
     height: 100vh;
     display: flex;
     width: 100%;
 }
-.navUser{
+
+.navUser {
     background-color: #1F2A40;
     width: 17%;
     height: 100%;
 }
-.imgUser{
+
+.imgUser {
     margin-top: 15%;
     width: 55%;
     border-radius: 50%;
 }
-.avatarUser{
+
+.avatarUser {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.info{
+
+.info {
     width: 80%;
-    margin:20px 0 0px 15px;
+    margin: 20px 0 0px 15px;
 }
-.infoUser{
+
+.infoUser {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 70%;
 }
-.actionBtnUser{
+
+.actionBtnUser {
     width: 100%;
-    height:34px;
+    height: 34px;
     text-decoration: none;
-    border:none;
+    border: none;
     border-radius: 2px;
-    font-size:1.5rem;
-    padding:0 12px;
-    outline:none;
+    font-size: 1.5rem;
+    padding: 0 12px;
+    outline: none;
     cursor: pointer;
-    display:inline-flex;
+    display: inline-flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     line-height: 1.6rem;
 }
-.btn{
+
+.btn {
     color: #ffffff;
     background: #aa4b6b;
     /* fallback for old browsers */
@@ -54,57 +60,65 @@
     background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.infoUserName{
+
+.infoUserName {
     width: 100%;
-    color:#fff;
+    color: #fff;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.infoUserPoint{
+
+.infoUserPoint {
     width: 100%;
-    color:#fff;
+    color: #fff;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.main{
-    padding:10px 20px 15px 20px;
+
+.main {
+    padding: 10px 20px 15px 20px;
     width: 100%;
     height: 100vh;
     background-color: #141b2d;
     display: flex;
     flex-direction: column;
 }
-.toolDash{
+
+.toolDash {
     margin: 10px 0px 0px 0px;
     width: 100%;
     display: flex;
     justify-content: space-around;
     height: 7%;
-    
+
 }
-.searchDash{
+
+.searchDash {
     display: flex;
     width: 70%;
     height: 100%;
     background-color: rgba(22, 24, 35, 0.06);
 }
-.inputSearch{
+
+.inputSearch {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    padding:10px;
+    padding: 10px;
     flex: 1;
-    border:none;
+    border: none;
     outline: none;
 }
-.search-btn{
+
+.search-btn {
     border: none;
-    padding:0 20px;
+    padding: 0 20px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
-.filterDash{
+
+.filterDash {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,20 +127,25 @@
     height: 100%;
     background-color: #ffffff;
 }
-.leaderBoard{
-    padding-top: 20px;
-    margin-top:20px;
-    background-color:#1F2A40;
+
+.leaderBoard {
+    padding: 2% 4%;
+    margin-top: 20px;
+    background-color: #1F2A40;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     overflow: hidden;
+    gap: 11%;
 }
-.btnMobile,.headerMobile{
+
+.btnMobile,
+.headerMobile {
     display: none;
 }
+
 .modal {
     position: fixed;
     top: 0;
@@ -137,57 +156,114 @@
     display: flex;
 }
 
-.modal__overlay {
+.pagination {
+    margin-top: revert;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0 5rem;
+    justify-content: center;
     
+}
+li a {
+    border-radius: 7px;
+    padding: 0.1rem 1rem;
+    border: gray 1px solid;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+li.previous a,
+li.next a,
+li.break a {
+    border-color: transparent;
+}
+
+li.active a {
+    background-color: #0366d6;
+    border-color: transparent;
+    color: white;
+    min-width: 32px;
+}
+
+li.disabled a {
+    color: grey;
+}
+
+li.disable,
+li.disabled a {
+    cursor: default;
+}
+
+.modal__overlay {
+
     position: absolute;
     width: 55%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
 }
-.modal{
+
+.modal {
     display: none;
 }
-@media (max-width:739px){
-    .navUser{
+
+@media (max-width:739px) {
+    .navUser {
         display: none;
     }
-    .navUser.isMobile{
+
+    .navUser.isMobile {
         display: block;
         position: fixed;
     }
-    .filterDash{
+
+    .filterDash {
         display: none;
     }
-    .btnMobile{
+
+    .btnMobile {
         display: block;
         height: 10%;
         border: none;
     }
-    .headerMobile{
+
+    .headerMobile {
         display: flex;
         justify-content: space-between;
         width: 100%;
         height: 5%;
     }
-    .searchDash{
+
+    .searchDash {
         margin: 12px 0;
         width: 100%;
     }
-    .leaderBoard{
+
+    .leaderBoard {
         margin-top: 30px;
         display: flex;
-        padding: 15px 0;
+        padding: 15px 0px;
+        padding-right: 20px;
+        overflow: auto;
+        gap: 0;
     }
-    .navUser{
+
+    .navUser {
         background-color: #1F2A40;
         width: 45%;
         height: 100%;
     }
-    .modal.isMobile{
-        display:flex;
+
+    .modal.isMobile {
+        display: flex;
         justify-content: flex-end;
     }
-    .icon{
+
+    .icon {
         border-radius: 3px;
+    }
+    .pagination{
+        display: none;
     }
 }

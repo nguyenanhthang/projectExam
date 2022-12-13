@@ -1,5 +1,5 @@
 .containerResult{
-    width:42%;
+    width:43%;
     height: 200px;
     background: #78ffd6;
     display: flex;
@@ -7,8 +7,7 @@
     padding: 10px;
     border: 1px solid #6DD5FA;
     color: #3c1053;
-    margin: 10px 30px;
-   
+    border: #fbbc1a 2px solid;
 }
 .title{
     font-weight: 700;

@@ -1,17 +1,21 @@
 import "./Result.css"
 import { faClock } from '@fortawesome/free-regular-svg-icons';
-//import { } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-function Result({title,time,point,ratting}) {
+import { useNavigate } from 'react-router-dom';
+function Result({data,title,minutes,point,ratting}) {
+    const navigate = useNavigate();
+    const handleExam =()=>{
+        localStorage.setItem('dataExam',JSON.stringify(data))
+        navigate('/login/dashboard/exam')
+    }
     return ( 
         <div className="containerResult">
-            <div className="headerResult">
+            <div onClick={()=>handleExam()} className="headerResult">
                 <p className="title">{title}</p>
             </div>
             <div className="body">
                 <div className="bodyTime">
                     <img src="../../../toppng 1.png" alt="" className="timeIcon" icon={faClock}/>
-                    <span className="time">{time} phút</span>
+                    <span className="time">{minutes} phút</span>
                 </div>
                 <div className="bodyPoint">
                     <img className="imgPoint" src="../../../image 4.png" alt="" />
