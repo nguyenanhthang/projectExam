@@ -1,4 +1,5 @@
-export const dataPeople=[{
+export const dataPeople=[
+    {
     id:'1',
     role:'user',
     userName:'thanghhbg',

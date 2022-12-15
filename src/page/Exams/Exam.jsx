@@ -18,6 +18,7 @@ function Exam() {
     const [active, setActive] = useState(1);
     const [show, setShow] = useState(false);
     const [timeLeft, setTimeLeft] = useState(100);
+    const [hover, setHover] = useState(false);
     let [sumCorrects, setSumCorrects] = useState(0);
     let [sumWrongs, setSumWrongs] = useState(0);
     let [doNotAnSwers, setDoNotAnSwers] = useState(0);
@@ -41,7 +42,7 @@ function Exam() {
         setDoNotAnSwers(
             (doNotAnSwers = dataExam.lession.length - (sumCorrects + sumWrongs))
         );
-        setPoint((point = sumCorrects * (250 / dataExam.lession.length)));
+        setPoint((point = sumCorrects * (250 / dataExam.lession.length)))
         localStorage.setItem(
             "finishExam",
             JSON.stringify({
@@ -50,19 +51,20 @@ function Exam() {
                 doNotAnSwers: doNotAnSwers,
                 point: point,
             })
-        );
+        )
         setShow(!show);
     };
     const handleShow = () => {
         setIsMobileE(() => (isMobileE ? "" : "isMobileE"));
     };
     const handleChoose = (id) => {
+        setHover(true)
         setActive(id)
         setChooseAnswer(
             dataExam.lession.filter((el) => {
                 return [el.id].includes(id)
             })
-        );
+        )
         setChecked([])
     };
     const handleChange = () => {
@@ -75,6 +77,7 @@ function Exam() {
                 return [el.id].includes(active+1)
             })
         )
+        
     }
     const pre=()=>{
         setActive(active-1)
@@ -87,7 +90,7 @@ function Exam() {
     useMemo(() => {
         setListAnswers([...listsAnswers, { id: active, result: checked }]);
     }, [checked]);
-    useEffect(() => {
+    useMemo(() => {
         setChooseAnswer(
             dataExam.lession.filter((el) => {
                 return [el.id].includes(1);
@@ -118,8 +121,9 @@ function Exam() {
                     handleSubmitExam()
                 }
             }
-            
         })
+        console.log(active-1)
+        console.log(listsAnswers[active-1])
     return (
         <div className="containerExam">
             <div className="asideLeftE">
@@ -166,7 +170,7 @@ function Exam() {
                                                         <input
                                                             style={{ marginRight: "5px" }}
                                                             onChange={() => setChecked(el.id)}
-                                                            checked={checked === el.id}
+                                                            checked={checked===el.id}
                                                             type="checkbox"
                                                         />
                                                         {el.name}

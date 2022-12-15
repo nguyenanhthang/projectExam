@@ -1,7 +1,6 @@
 import "./DashBoard.css";
-import { faUser, faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import {
-    faFilter,
     faBars,
     faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
@@ -65,7 +64,7 @@ function DashBoard() {
                     </div>
                     <div className="actionBtnUser">
                         <button onClick={handleOut} className="btn">
-                            Logout
+                            LOGOUT
                         </button>
                     </div>
                 </div>
@@ -106,13 +105,13 @@ function DashBoard() {
                             .map((el, i) => {
                                 return (
                                     <Result
-                                        key={el.id}
+                                        key={i}
                                         data={el}
                                         level={el.level}
                                         minutes={el.minutes}
                                         title={el.title}
                                         point={ getFinish?getFinish.point:el.point}
-                                        ratting={<FontAwesomeIcon icon={faStar} />}
+                                        ratting={<FontAwesomeIcon className="rating rate" icon={faStar} />}
                                     />
                                 );
                             })

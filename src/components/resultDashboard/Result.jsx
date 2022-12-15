@@ -1,6 +1,10 @@
 import "./Result.css"
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import {
+    faStar,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Result({data,title,minutes,point,ratting,level}) {
     const navigate = useNavigate();
     const handleExam =()=>{
@@ -24,10 +28,10 @@ function Result({data,title,minutes,point,ratting,level}) {
                 </div>
             </div>
             <div className="footer">
-                <span className="rating">{ratting}</span>
-                <span className="rating">{ratting}</span>
-                <span className="rating">{ratting}</span>
-                <span className="rating">{ratting}</span>
+                <span className=" rating rate">{<FontAwesomeIcon icon={faStar}/>}</span>
+                <span className=" rating rate">{<FontAwesomeIcon icon={faStar}/>}</span>
+                <span className=" rating rate">{<FontAwesomeIcon icon={faStar}/>}</span>
+                <span className=" rating rate">{<FontAwesomeIcon icon={faStar}/>}</span>
                 <span className="rating">{ratting}</span>
             </div>
         </div>

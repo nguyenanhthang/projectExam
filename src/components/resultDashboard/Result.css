@@ -9,8 +9,11 @@
     color: #3c1053;
     border: #fbbc1a 2px solid;
 }
+.rating.rate{
+    color: #909090;
+}
 .title{
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.2rem;
     cursor: pointer;
     overflow: hidden;
