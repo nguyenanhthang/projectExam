@@ -1,14 +1,14 @@
 import "./Result.css"
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { useNavigate } from 'react-router-dom';
-function Result({key,data,title,minutes,point,ratting,level}) {
+function Result({data,title,minutes,point,ratting,level}) {
     const navigate = useNavigate();
     const handleExam =()=>{
         localStorage.setItem('dataExam',JSON.stringify(data))
         navigate('/login/dashboard/exam')
     }
     return ( 
-        <div id={key} className="containerResult">
+        <div className="containerResult">
             <div onClick={()=>handleExam()} className="headerResult">
                 <p className="title">{title}</p>
             </div>

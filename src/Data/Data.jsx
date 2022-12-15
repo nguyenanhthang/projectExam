@@ -9,7 +9,7 @@ export const dataPeople=[{
         {
             id:1,
             title:'Kiểm tra an toàn bảo mật thông tin 2...',
-            minutes:7,
+            minutes:1,
             seconds:30,
             point:0,
             level:'easy',

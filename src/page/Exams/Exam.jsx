@@ -74,7 +74,15 @@ function Exam() {
         setActive(active+1)
         setChooseAnswer(
             dataExam.lession.filter((el) => {
-                return [el.id].includes(active)
+                return [el.id].includes(active+1)
+            })
+        )
+    }
+    const pre=()=>{
+        setActive(active-1)
+        setChooseAnswer(
+            dataExam.lession.filter((el) => {
+                return [el.id].includes(active-1)
             })
         )
     }
@@ -89,11 +97,18 @@ function Exam() {
         );
     }, []);
     
-    // const getProgress=()=>{
-    //     const {start, end} = this.props;
-    //     const now = new Date().valueOf();
-    //     return (now - start) / (end - start);
-    // }
+    const getProgress=()=>{
+        let seconds = (dataExam.seconds)*1000
+        let minutes = (dataExam.minutes *60)*1000
+        setInterval(() => {
+            let countSeconds =seconds -1000
+            if(countSeconds===0){
+                let countMinutes =minutes -1000
+                return countMinutes
+                
+            }
+        },1000)
+    }
     // const now = new Date().valueOf();
     // const start = Math.floor(now / 60000) * 60000; // current minute
     // const end = start + 60000; // start + 1 minute
@@ -156,7 +171,7 @@ function Exam() {
                             );
                         })}
                     <div className="btnExam">
-                        <button  className="btn next">Câu Trước</button>
+                        <button onClick={pre} className="btn next">Câu Trước</button>
                         <button onClick={handleChange} className="btn">
                             Chuyển Đến
                         </button>
