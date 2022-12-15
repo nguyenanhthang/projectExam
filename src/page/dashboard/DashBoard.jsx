@@ -106,7 +106,7 @@ function DashBoard() {
                             .map((el, i) => {
                                 return (
                                     <Result
-                                        key={i}
+                                        key={el.id}
                                         data={el}
                                         level={el.level}
                                         minutes={el.minutes}

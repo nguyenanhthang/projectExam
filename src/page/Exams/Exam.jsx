@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import "./Exam.css";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -53,11 +53,9 @@ function Exam() {
         );
         setShow(!show);
     };
-    console.log(listsAnswers);
     const handleShow = () => {
         setIsMobileE(() => (isMobileE ? "" : "isMobileE"));
     };
-    
     const handleChoose = (id) => {
         setActive(id)
         setChooseAnswer(
@@ -96,7 +94,7 @@ function Exam() {
             })
         );
     }, []);
-    let timeNow = new Date().getTime()
+    let timerRoot = (dataExam.minutes*60)+(dataExam.seconds)
     const [ minutes, setMinutes ] = useState(dataExam.minutes);
     const [seconds, setSeconds ] =  useState(dataExam.seconds);
     useEffect(()=>{
@@ -112,13 +110,16 @@ function Exam() {
                         setSeconds(59);
                     }
                 }
-                //setTimeLeft(timeLeft - ((minutes*60)+(seconds)*1000)/100)
+                setTimeLeft((Math.floor(100*((minutes*60)+(seconds)))/timerRoot).toFixed(1))
             }, 1000)
             return ()=> {
                 clearInterval(myInterval);
-            };
-        });
-        console.log((timeLeft*(((minutes*60)+(seconds))*1000)/1000));
+                if(minutes === 0&&seconds === 0){
+                    handleSubmitExam()
+                }
+            }
+            
+        })
     return (
         <div className="containerExam">
             <div className="asideLeftE">
@@ -207,6 +208,7 @@ function Exam() {
                     </button>
                 </div>
             </div>
+            
             {show && (
                 <div className="modalR">
                     <div className="modal__overlayR"></div>
