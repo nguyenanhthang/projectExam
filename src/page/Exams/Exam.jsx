@@ -96,23 +96,29 @@ function Exam() {
             })
         );
     }, []);
-    
-    const getProgress=()=>{
-        let seconds = (dataExam.seconds)*1000
-        let minutes = (dataExam.minutes *60)*1000
-        setInterval(() => {
-            let countSeconds =seconds -1000
-            if(countSeconds===0){
-                let countMinutes =minutes -1000
-                return countMinutes
-                
-            }
-        },1000)
-    }
-    // const now = new Date().valueOf();
-    // const start = Math.floor(now / 60000) * 60000; // current minute
-    // const end = start + 60000; // start + 1 minute
-    // console.log([now,start,end])
+    let timeNow = new Date().getTime()
+    const [ minutes, setMinutes ] = useState(dataExam.minutes);
+    const [seconds, setSeconds ] =  useState(dataExam.seconds);
+    useEffect(()=>{
+        let myInterval = setInterval(() => {
+                if (seconds > 0) {
+                    setSeconds(seconds - 1);
+                }
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(myInterval)
+                    } else {
+                        setMinutes(minutes - 1);
+                        setSeconds(59);
+                    }
+                }
+                //setTimeLeft(timeLeft - ((minutes*60)+(seconds)*1000)/100)
+            }, 1000)
+            return ()=> {
+                clearInterval(myInterval);
+            };
+        });
+        console.log((timeLeft*(((minutes*60)+(seconds))*1000)/1000));
     return (
         <div className="containerExam">
             <div className="asideLeftE">
@@ -131,7 +137,7 @@ function Exam() {
                     </div>
                     <div className="timeExam">
                         <span className="countTime">
-                            Còn lại: {dataExam.minutes || 0}phút {dataExam.seconds || 0}giây
+                            Còn lại: {minutes}phút {seconds < 10 ?  `${seconds}` : seconds}giây
                         </span>
                     </div>
                     <div className="progress-bar">
@@ -179,6 +185,7 @@ function Exam() {
                     </div>
                 </div>
             </div>
+            {/* {getProgress()} */}
             <div className="asideRight">
                 <div className="chooseQuestion">
                     {dataExam.lession &&
