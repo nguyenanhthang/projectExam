@@ -11,7 +11,6 @@ function Login() {
         userName:'',
         password:''
     })
-    const [local,setlocal]=useState({})
     const navigate = useNavigate();
     const getDataLogin=(e)=>{
         let name = e.target.name

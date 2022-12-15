@@ -7,18 +7,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Result from "../../components/resultDashboard/Result";
-import { useState} from "react";
+import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
 function DashBoard() {
     const navigate = useNavigate();
-    const dataLogin= useLocation()
-    const getDate = localStorage.getItem('DataUser')
-    console.log(getDate);
+    const getDate = localStorage.getItem("DataUser")
     const userParse = JSON.parse(getDate)
-    console.log(userParse);
+    const getFinish = JSON.parse(localStorage.getItem('finishExam'))
     const [isMobile, setIsMobile] = useState("");
+    const [level,setLevel]=useState('')
+    const [filter,setfilter]=useState(userParse.chapper)
+    const [searchItem,setSearchItem]=useState('')
     const handleShow = () => {
         setIsMobile(() => (isMobile ? "" : "isMobile"));
     };
@@ -27,15 +28,24 @@ function DashBoard() {
     const usersPerPage = 4;
     const pagesVisited = pageNumber * usersPerPage;
     const pageCount = Math.ceil(
-        userParse.chapper && userParse.chapper.length / usersPerPage
-    );
-    console.log(userParse.chapper);
+        filter && filter.length / usersPerPage
+    )
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     };
-    const handleOut =()=>{
-        localStorage.removeItem('user')
-        navigate(-1)
+    const handleOut = () => {
+        localStorage.removeItem("user");
+        navigate(-1);
+    };
+    useMemo(()=>{
+        setfilter(userParse.chapper.filter((el)=> {
+            return el.title.includes(searchItem)&&el.level.includes(level)
+        }))
+    },[level,searchItem])
+    const search =()=>{
+        setfilter(userParse.chapper.filter((el)=> {
+            return el.title.includes(searchItem)&&el.level.includes(level)
+        }))
     }
     return (
         <div className="container">
@@ -48,11 +58,15 @@ function DashBoard() {
                 </div>
                 <div className="infoUser">
                     <div className="info">
-                        <p className="infoUserName">User: {userParse.name||''}</p>
-                        <span className="infoUserPoint">point: {userParse.point||''}</span>
+                        <p className="infoUserName">User: {userParse.name || ""}</p>
+                        <span className="infoUserPoint">
+                            point: {getFinish?getFinish.point+userParse.point:userParse.point}
+                        </span>
                     </div>
                     <div className="actionBtnUser">
-                        <button onClick={handleOut} className="btn">Logout</button>
+                        <button onClick={handleOut} className="btn">
+                            Logout
+                        </button>
                     </div>
                 </div>
             </div>
@@ -67,31 +81,37 @@ function DashBoard() {
                 <div className="toolDash">
                     <div className="searchDash">
                         <input
+                        onChange={(e)=>setSearchItem(e.target.value)}
                             className="inputSearch"
                             spellCheck={false}
                             placeholder="Search..."
                         />
-                        <button className="search-btn">
+                        <button onClick={search} className="search-btn">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
                     <div className={`filterDash ${isMobile}`}>
-                        <span>
-                            Difficult <FontAwesomeIcon icon={faFilter} />
-                        </span>
+                        <select onChange={(e)=>setLevel(e.target.value)} style={{width:'100%',height:'100%',border:'none',padding:'5px',fontSize:'1rem',outline:'none'}} id="filter">
+                            <option value="">All</option>
+                            <option value="easy">easy</option>
+                            <option value="medium">medium</option>
+                            <option value="difficult">difficult</option>
+                        </select>
                     </div>
                 </div>
+                    
                 <div className="leaderBoard">
-                    {userParse.chapper &&
-                        userParse.chapper
+                    {filter &&
+                        filter
                             .map((el, i) => {
                                 return (
                                     <Result
-                                        key={i}
+                                        key={el.id}
                                         data={el}
+                                        level={el.level}
                                         minutes={el.minutes}
                                         title={el.title}
-                                        point={el.point}
+                                        point={ getFinish?getFinish.point:el.point}
                                         ratting={<FontAwesomeIcon icon={faStar} />}
                                     />
                                 );

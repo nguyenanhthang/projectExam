@@ -116,6 +116,7 @@
     padding: 0 20px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+    cursor: pointer;
 }
 
 .filterDash {

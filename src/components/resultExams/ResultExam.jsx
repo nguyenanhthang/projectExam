@@ -1,9 +1,9 @@
 import './ResultExam.css'
-function ResultExam({title,sumCorrects,sumWrongs,doNotAnSwers,sumQuestions,point}) {
+function ResultExam({title,sumCorrects,sumWrongs,doNotAnSwers,sumQuestions,point,handleChange}) {
     return ( 
         <div className="containerResultE">
             <div className="headerResult">
-                <h4 className="titleExam">{title||"Kiểm tra an toàn bảo mật thông tin lần 2"}</h4>
+                <h4 className="titleExam">Môn: {title||""}</h4>
             </div>
             <div className="bodyResult">
                 <div className="infoResult">
@@ -13,11 +13,11 @@ function ResultExam({title,sumCorrects,sumWrongs,doNotAnSwers,sumQuestions,point
                     <span>Tổng số câu hỏi: {sumQuestions||0}</span>
                 </div>
                 <div className="pointResult">
-                    <span><b>Điểm số: {point||0}/160</b></span>
+                    <span><b>Điểm số: {point||0}/250</b></span>
                 </div>
             </div>
             <div className='actionResult'>
-                <button className='btn'>Dashboard</button>
+                <button onClick={handleChange} className='btn'>Dashboard</button>
             </div>
         </div>
     );
