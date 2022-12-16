@@ -42,7 +42,7 @@ function Exam() {
         setDoNotAnSwers(
             (doNotAnSwers = dataExam.lession.length - (sumCorrects + sumWrongs))
         );
-        setPoint((point = sumCorrects * (250 / dataExam.lession.length)))
+        setPoint((point = sumCorrects * (250 / dataExam.lession.length)));
         localStorage.setItem(
             "finishExam",
             JSON.stringify({
@@ -51,42 +51,41 @@ function Exam() {
                 doNotAnSwers: doNotAnSwers,
                 point: point,
             })
-        )
+        );
         setShow(!show);
     };
     const handleShow = () => {
         setIsMobileE(() => (isMobileE ? "" : "isMobileE"));
     };
     const handleChoose = (id) => {
-        setHover(true)
-        setActive(id)
+        setHover(true);
+        setActive(id);
         setChooseAnswer(
             dataExam.lession.filter((el) => {
-                return [el.id].includes(id)
+                return [el.id].includes(id);
             })
-        )
-        setChecked([])
+        );
+        setChecked([]);
     };
     const handleChange = () => {
         navigate(-1);
     };
-    const next=()=>{
-        setActive(active+1)
+    const next = () => {
+        setActive(active + 1);
         setChooseAnswer(
             dataExam.lession.filter((el) => {
-                return [el.id].includes(active+1)
+                return [el.id].includes(active + 1);
             })
-        )
-        
-    }
-    const pre=()=>{
-        setActive(active-1)
+        );
+    };
+    const pre = () => {
+        setActive(active - 1);
         setChooseAnswer(
             dataExam.lession.filter((el) => {
-                return [el.id].includes(active-1)
+                return [el.id].includes(active - 1);
             })
-        )
-    }
+        );
+    };
     useMemo(() => {
         setListAnswers([...listsAnswers, { id: active, result: checked }]);
     }, [checked]);
@@ -97,33 +96,35 @@ function Exam() {
             })
         );
     }, []);
-    let timerRoot = (dataExam.minutes*60)+(dataExam.seconds)
-    const [ minutes, setMinutes ] = useState(dataExam.minutes);
-    const [seconds, setSeconds ] =  useState(dataExam.seconds);
-    useEffect(()=>{
+    let timerRoot = dataExam.minutes * 60 + dataExam.seconds;
+    const [minutes, setMinutes] = useState(dataExam.minutes);
+    const [seconds, setSeconds] = useState(dataExam.seconds);
+    useEffect(() => {
         let myInterval = setInterval(() => {
-                if (seconds > 0) {
-                    setSeconds(seconds - 1);
-                }
-                if (seconds === 0) {
-                    if (minutes === 0) {
-                        clearInterval(myInterval)
-                    } else {
-                        setMinutes(minutes - 1);
-                        setSeconds(59);
-                    }
-                }
-                setTimeLeft((Math.floor(100*((minutes*60)+(seconds)))/timerRoot).toFixed(1))
-            }, 1000)
-            return ()=> {
-                clearInterval(myInterval);
-                if(minutes === 0&&seconds === 0){
-                    handleSubmitExam()
+            if (seconds > 0) {
+                setSeconds(seconds - 1);
+            }
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(myInterval);
+                } else {
+                    setMinutes(minutes - 1);
+                    setSeconds(59);
                 }
             }
-        })
-        console.log(active-1)
-        console.log(listsAnswers[active-1])
+            setTimeLeft(
+                (Math.floor(100 * (minutes * 60 + seconds)) / timerRoot).toFixed(1)
+            );
+        }, 1000);
+        return () => {
+            clearInterval(myInterval);
+            if (minutes === 0 && seconds === 0) {
+                handleSubmitExam();
+            }
+        };
+    });
+    console.log(active - 1);
+    console.log(listsAnswers[active - 1]);
     return (
         <div className="containerExam">
             <div className="asideLeftE">
@@ -142,7 +143,7 @@ function Exam() {
                     </div>
                     <div className="timeExam">
                         <span className="countTime">
-                            Còn lại: {minutes}phút {seconds < 10 ?  `${seconds}` : seconds}giây
+                            Còn lại: {minutes}phút {seconds < 10 ? `${seconds}` : seconds}giây
                         </span>
                     </div>
                     <div className="progress-bar">
@@ -170,7 +171,7 @@ function Exam() {
                                                         <input
                                                             style={{ marginRight: "5px" }}
                                                             onChange={() => setChecked(el.id)}
-                                                            checked={checked===el.id}
+                                                            checked={checked === el.id}
                                                             type="checkbox"
                                                         />
                                                         {el.name}
@@ -182,15 +183,18 @@ function Exam() {
                             );
                         })}
                     <div className="btnExam">
-                        <button onClick={pre} className="btn next">Câu Trước</button>
+                        <button onClick={pre} className="btn next">
+                            Câu Trước
+                        </button>
                         <button onClick={handleChange} className="btn">
                             Chuyển Đến
                         </button>
-                        <button onClick={next} className="btn prev">Câu Sau</button>
+                        <button onClick={next} className="btn prev">
+                            Câu Sau
+                        </button>
                     </div>
                 </div>
             </div>
-            {/* {getProgress()} */}
             <div className="asideRight">
                 <div className="chooseQuestion">
                     {dataExam.lession &&
@@ -212,7 +216,7 @@ function Exam() {
                     </button>
                 </div>
             </div>
-            
+
             {show && (
                 <div className="modalR">
                     <div className="modal__overlayR"></div>
@@ -240,7 +244,8 @@ function Exam() {
                                             <button
                                                 key={el.id}
                                                 onClick={() => handleChoose(el.id)}
-                                                className="btnQuestion active"
+                                                className={`btnQuestion ${active === el.id ? "active" : ""
+                                                    }`}
                                             >
                                                 {el.id}
                                             </button>
