@@ -52,7 +52,7 @@ function Login() {
                     </div>
                     <div className="input-wrapper">
                         <div className='input'>
-                        <FontAwesomeIcon className='icon' icon={faKey} />
+                            <img className='icon img_password' src="../../../icon password.png" alt="" />
                             <input onChange={getDataLogin} type="password" placeholder="Password" name="password"/>
                             <div className="error" id="password-error"></div>
                         </div>

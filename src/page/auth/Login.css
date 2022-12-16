@@ -72,6 +72,9 @@
     color: #ffffff;
 }
 
+.img_password{
+    width: 35px;
+}
 .input-wrapper input{
     border: none;
     padding: 10px;
